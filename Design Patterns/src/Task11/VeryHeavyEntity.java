@@ -1,31 +1,35 @@
+package Task11;
+
+import Task11.Entity;
+
 import java.util.concurrent.TimeUnit;
 
 public class VeryHeavyEntity implements Entity {
-    private final int id;
+    private int id;
 
-    private VeryHeavyEntity(int id) {
-        try {
-            TimeUnit.SECONDS.sleep(30);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+    public VeryHeavyEntity(int id) {
         this.id = id;
+        // Simulating long creation time
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("VeryHeavyEntity created with id: " + id);
     }
 
-    public static VeryHeavyEntity load(int id) {
-        System. out. println("Data is being initialized... This may take a few minutes...");
-        VeryHeavyEntity entity = new VeryHeavyEntity(id);
-        System. out. println("Data initialization completed!");
-        return entity;
-    }
 
-    @Override
     public int getId() {
         return id;
     }
 
-    @Override
+
+    public int getid() {
+        return 0;
+    }
+
+
     public String find(String query) {
-        return "Nothing found.";
+        return "Result for: " + query;
     }
 }

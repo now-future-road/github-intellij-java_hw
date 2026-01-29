@@ -12,20 +12,25 @@ public class User {
         this.lastName = lastName;
         this.photo = photo;
     }
-    public int getId(){
+
+    public int getId() {
         return id;
     }
-    public String getFirstName(){
+
+    public String getFirstName() {
         return firstName;
     }
-    public String getLastName(){
-        return  lastName;
+
+    public String getLastName() {
+        return lastName;
     }
-    public Object getPhoto(){
+
+    public Object getPhoto() {
         return photo;
     }
+
     @Override
-    public String toString(){
-        return '\" + firstName + '' + lastName + '\";
+    public String toString() {
+        return '\'' + firstName + ' ' + lastName + '\'';
     }
 }

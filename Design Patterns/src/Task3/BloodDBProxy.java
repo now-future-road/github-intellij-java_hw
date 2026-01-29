@@ -1,23 +1,45 @@
 package Task3;
-import java.util.Scanner;
 
+import java.util.List;
 import java.util.Scanner;
+import java.util.Collections;
+import Task3.BloodSample;
+import Task3.DB;
+import Task3.SecuritySystem;
 
 public class BloodDBProxy implements DB {
+
     private final SecuritySystem security;
     private BloodDB db;
     private final BloodSample denied = new BloodSample(0, "access", "denied", null, null, null);
 
-    BloodDBProxy(SecuritySystem security){
-        this.security = security;
-        Scanner sc = new Scanner(System.in);
-        String username = sc.nextLine();
-        String password = sc.nextLine();
-        if(security.authorize(username,password)){
-            this.db = new BloodDB();
+    public BloodDBProxy() {  // <-- must be public!
+        security = new SecuritySystem();
+
+        Scanner scanner = new Scanner(System.in);
+        String username = scanner.nextLine();
+        String password = scanner.nextLine();
+
+        security.authorize(username, password);
+
+        if (security.isAuthorized()) {
+            db = new BloodDB();
         }
+    }
 
+    @Override
+    public BloodSample getById(int id) {
+        if (security.isAuthorized()) {
+            return db.getById(id);
+        }
+        return denied;
+    }
 
+    @Override
+    public List<BloodSample> find(String request) {
+        if (security.isAuthorized()) {
+            return db.find(request);
+        }
+        return Collections.singletonList(denied);
     }
 }
-

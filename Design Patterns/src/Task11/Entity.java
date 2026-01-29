@@ -1,6 +1,7 @@
 package Task11;
 
 public interface Entity {
-    int getid();
+    int getId();
+
     String find(String query);
 }

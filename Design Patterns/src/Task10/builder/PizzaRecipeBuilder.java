@@ -1,4 +1,6 @@
 package Task10.builder;
+import Task10.PizzaType;
+import Task10.Recipe;
 
 public class PizzaRecipeBuilder implements Buiilder {
     private PizzaType type;
@@ -7,6 +9,12 @@ public class PizzaRecipeBuilder implements Buiilder {
     private String topping;
     public void setType(){
     }
+
+    @Override
+    public void setType(PizzaType type) {
+
+    }
+
     public void setDough(String dough){
         this.dough = dough;
     }
@@ -16,7 +24,8 @@ public class PizzaRecipeBuilder implements Buiilder {
     public void setTopping(String topping){
         this.topping = topping;
     }
-    public void getResult(){
+    public Recipe getResult(){
 
+        return null;
     }
 }

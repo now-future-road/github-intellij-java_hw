@@ -4,13 +4,22 @@ public class CguRequisition extends RequisitionWithPhone {
     public String requestedSubscriptionType;
     public String language;
 
-    public CguRequisition(CguRequisition cg){
+    // Add this no-argument constructor
+    public CguRequisition() {
+        super();
+        this.requestedSubscriptionType = "";
+        this.language = "";
+    }
+
+    // Copy constructor (for cloning)
+    public CguRequisition(CguRequisition cg) {
         super(cg);
         this.requestedSubscriptionType = cg.requestedSubscriptionType;
         this.language = cg.language;
     }
-    public CguRequisition clone(){
+
+    @Override
+    public CguRequisition clone() {
         return new CguRequisition(this);
     }
 }
-
